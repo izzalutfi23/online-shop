@@ -90,6 +90,15 @@
 			case 'berita':
 				include 'page/berita.php';
 				break;
+			case 'kontak':
+				include 'page/kontak.php';
+				break;
+			case 'video':
+				include 'page/video.php';
+				break;
+			case 'p-detail':
+				include 'page/produk-detail.php';
+				break;
 		}
 	 ?>
 
