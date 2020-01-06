@@ -58,6 +58,7 @@
 							<li class="nav-item <?php if($p == "berita"){echo "active";} ?>"><a class="nav-link" href="?page=berita">Berita</a></li>
 							<li class="nav-item <?php if($p == "video"){echo "active";} ?>"><a class="nav-link" href="?page=video">Video</a></li>
 							<li class="nav-item <?php if($p == "kontak"){echo "active";} ?>"><a class="nav-link" href="?page=kontak">Kontak</a></li>
+							<li class="nav-item <?php if($p == "login"){echo "active";} ?>"><a class="nav-link" href="?page=login">Login</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
@@ -101,6 +102,12 @@
 				break;
 			case 'cart':
 				include 'page/keranjang.php';
+				break;
+			case 'ceckout':
+				include 'page/cekout.php';
+				break;
+			case 'login':
+				include 'page/login.php';
 				break;
 		}
 	 ?>
