@@ -50,11 +50,14 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html">Promo</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html">Berita</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html">Video</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html">Kontak</a></li>
+							<?php 
+								@$p = $_GET['page'];
+							 ?>
+							<li class="nav-item <?php if($p == ""){echo "active";} ?>"><a class="nav-link" href="index.php">Home</a></li>
+							<li class="nav-item <?php if($p == "promo"){echo "active";} ?> "><a class="nav-link" href="?page=promo">Promo</a></li>
+							<li class="nav-item <?php if($p == "berita"){echo "active";} ?>"><a class="nav-link" href="?page=berita">Berita</a></li>
+							<li class="nav-item <?php if($p == "video"){echo "active";} ?>"><a class="nav-link" href="?page=video">Video</a></li>
+							<li class="nav-item <?php if($p == "kontak"){echo "active";} ?>"><a class="nav-link" href="?page=kontak">Kontak</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
@@ -78,65 +81,14 @@
 	</header>
 	<!-- End Header Area -->
 
-	<!-- start banner Area -->
-	<section class="banner-area">
-		<div class="container">
-			<div class="row fullscreen align-items-center justify-content-start">
-				<div class="col-lg-12">
-					<div class="active-banner-slider owl-carousel">
-						<!-- single-slide -->
-						<div class="row single-slide align-items-center d-flex">
-							<div class="col-lg-5 col-md-6">
-								<div class="banner-content">
-									<h1>GhiNaj Shop <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-7">
-								<div class="banner-img">
-									<img class="img-fluid" src="img/banner/banner-img.png" alt="">
-								</div>
-							</div>
-						</div>
-						<!-- single-slide -->
-						<div class="row single-slide">
-							<div class="col-lg-5">
-								<div class="banner-content">
-									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-7">
-								<div class="banner-img">
-									<img class="img-fluid" src="img/banner/banner-img.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End banner Area -->
-
 	<?php 
 		error_reporting(0);
 		switch ($_GET['page']) {
 			default:
 				include 'page/home.php';
 				break;
-			case 'variable':
-				# code...
+			case 'berita':
+				include 'page/berita.php';
 				break;
 		}
 	 ?>
