@@ -99,6 +99,9 @@
 			case 'p-detail':
 				include 'page/produk-detail.php';
 				break;
+			case 'cart':
+				include 'page/keranjang.php';
+				break;
 		}
 	 ?>
 
