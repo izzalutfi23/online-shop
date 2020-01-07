@@ -42,4 +42,31 @@ else if($proses == 'delete_barang'){
 	mysqli_query($koneksi, "DELETE FROM barang WHERE id_barang = '$_GET[id_barang]'");
 	header('location:index.php?page=produk');
 }
+else if($proses == 'add_berita'){
+	$lokasi_file	=$_FILES['foto']['tmp_name'];
+	$tipe_file		=$_FILES['foto']['type'];
+	$nama_file		=$_FILES['foto']['name'];
+	move_uploaded_file($lokasi_file, "../img/berita/$nama_file");
+
+	mysqli_query($koneksi,"INSERT INTO berita (judul, foto, penulis, tgl, isi) VALUES ('$_POST[judul]', '$nama_file', '$_POST[penulis]', '$_POST[tgl]', '$_POST[isi]')");
+	header('location:index.php?page=berita');
+}
+else if($proses == 'edit_berita'){
+	$lokasi_file	=$_FILES['foto']['tmp_name'];
+	$tipe_file		=$_FILES['foto']['type'];
+	$nama_file		=$_FILES['foto']['name'];
+	move_uploaded_file($lokasi_file, "../img/berita/$nama_file");
+
+	if(empty($nama_file)){
+		mysqli_query($koneksi,"UPDATE berita SET judul = '$_POST[judul]', penulis = '$_POST[penulis]', tgl = '$_POST[tgl]', isi = '$_POST[isi]' WHERE id_berita = '$_POST[id_berita]'");	
+	}
+	else{
+		mysqli_query($koneksi,"UPDATE berita SET judul = '$_POST[judul]', foto = '$nama_file', penulis = '$_POST[penulis]', tgl = '$_POST[tgl]', isi = '$_POST[isi]' WHERE id_berita = '$_POST[id_berita]'");
+	}
+	header('location:index.php?page=berita');
+}
+else if($proses == 'delete_berita'){
+	mysqli_query($koneksi, "DELETE FROM berita WHERE id_berita = '$_GET[id_berita]'");
+	header('location:index.php?page=berita');
+}
 ?>
