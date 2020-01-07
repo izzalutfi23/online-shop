@@ -16,20 +16,15 @@
                     <h4 class="modal-title">Tambah Data Kategori</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="proses.php?proses=add_kategori" method="POST">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label for="exampleInputEmail1">Nama kategori</label>
+                        <input name="nama_kategori" type="text" class="form-control" placeholder="Masukkan Nama Kategori">
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Simpan</button>
+                      <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
                     </div>
                   </form>
                 </div>
@@ -53,16 +48,22 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Pakaian Pria</td>
+                <?php
+                include '../koneksi.php';
+                $no =1;
+                $query = mysqli_query($koneksi, "SELECT * FROM kategori");
+                while($data = mysqli_fetch_array($query)){
+                 ?>
+                 <tr>
+                  <td><?=$no++;?></td>
+                  <td><?=$data['nama_kategori'];?></td>
                   <td>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#edit1"><i class="fa fa-edit"></i></button>
-                    <a href="#"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#edit<?=$no;?>"><i class="fa fa-edit"></i></button>
+                    <a onclick="return confirm('Data akan dihapus!')" href="proses.php?proses=delete_kategori&&id_kategori=<?=$data['id_kategori'];?>"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
                   </td>
                 </tr>
                 <!-- Modal Edit data -->
-                <div class="modal fade" id="edit1">
+                <div class="modal fade" id="edit<?=$no;?>">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -71,20 +72,16 @@
                           <h4 class="modal-title">Edit Data Kategori</h4>
                         </div>
                         <div class="modal-body">
-                          <form action="" method="post">
+                          <form action="proses.php?proses=edit_kategori" method="POST">
                             <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                              <label for="exampleInputEmail1">Nama kategori</label>
+                              <input type="hidden" name="id_kategori" value="<?=$data['id_kategori'];?>">
+                              <input name="nama_kategori" type="text" class="form-control" value="<?=$data['nama_kategori'];?>">
                             </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" name="simpan" class="btn btn-primary">Edit</button>
                           </div>
                         </form>
                       </div>
@@ -94,14 +91,14 @@
                   </div>
                   <!-- /.modal -->
                   <!-- /Modal Edit data -->
+                <?php } ?>
 
-
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
+              </tbody>
+            </table>
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
+        <!-- /.box -->
       </div>
-    </section>
+    </div>
+  </section>

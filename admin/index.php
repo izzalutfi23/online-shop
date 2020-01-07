@@ -146,7 +146,16 @@
         case 'kategori':
           include 'page/kategori.php';
           break;
-        
+        case 'produk':
+          include 'page/produk.php';
+          break;
+        case 'berita':
+          include 'page/berita.php';
+          break;
+        case 'pesanan':
+          include 'page/pesanan.php';
+          break;
+
         default:
           include 'page/home.php';
           break;
