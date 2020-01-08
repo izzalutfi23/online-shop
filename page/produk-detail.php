@@ -1,3 +1,10 @@
+<!-- Menampilkan Detail barang -->
+<?php 
+	include 'koneksi.php';
+	$qb = mysqli_query($koneksi, "SELECT * FROM barang JOIN kategori ON barang.id_kategori=kategori.id_kategori WHERE id_barang = '$_GET[id_barang]'");
+	$db = mysqli_fetch_array($qb);
+ ?>
+
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
 	<div class="container">
@@ -22,27 +29,24 @@
 			<div class="col-lg-6">
 				<div class="s_Product_carousel">
 					<div class="single-prd-item">
-						<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						<img class="img-fluid" src="img/produk/<?=$db['foto'];?>" alt="">
 					</div>
 					<div class="single-prd-item">
-						<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						<img class="img-fluid" src="img/produk/<?=$db['foto'];?>" alt="">
 					</div>
 					<div class="single-prd-item">
-						<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						<img class="img-fluid" src="img/produk/<?=$db['foto'];?>" alt="">
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-5 offset-lg-1">
 				<div class="s_product_text">
-					<h3>Faded SkyBlu Denim Jeans</h3>
-					<h2>$149.99</h2>
+					<h3><?=$db['nama_barang'];?></h3>
+					<h2>Rp.<?=number_format($db['harga']);?></h2>
 					<ul class="list">
-						<li><a class="active" href="#"><span>Category</span> : Household</a></li>
-						<li><a href="#"><span>Availibility</span> : In Stock</a></li>
+						<li><a class="active" href="#"><span>Category</span> : <?=$db['nama_kategori'];?></a></li>
 					</ul>
-					<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-						something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-					during the winter.</p>
+					<p><?=$db['deskripsi'];?>.</p>
 					<div class="product_count">
 						<label for="qty">Quantity:</label>
 						<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
@@ -52,7 +56,7 @@
 							class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="index.php?page=cart">Add to Cart</a>
+							<a class="primary-btn" href="index.php?page=cart">Tambah ke Keranjang</a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>

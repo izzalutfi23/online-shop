@@ -34,20 +34,17 @@
 			<div class="sidebar-categories">
 				<div class="head">Kategori</div>
 				<ul class="main-categories">
+					<?php 
+						include 'koneksi.php';
+						$qk = mysqli_query($koneksi, "SELECT * FROM kategori");
+						while ($dk = mysqli_fetch_array($qk)){
+						$jml_brg = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_kategori = '$dk[id_kategori]'");
+						$jb = mysqli_num_rows($jml_brg);
+					 ?>
 					<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-						class="lnr lnr-arrow-right"></span>Pakaian<span class="number">(53)</span></a>
-						<ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
-							<li class="main-nav-list child"><a href="#">Pakaian Pria<span class="number">(13)</span></a></li>
-							<li class="main-nav-list child"><a href="#">Pakaian Wanita<span class="number">(09)</span></a></li>
-							<li class="main-nav-list child"><a href="#">Sport<span class="number">(17)</span></a></li>
-						</ul>
+						class="lnr lnr-arrow-right"></span><?=$dk['nama_kategori'];?><span class="number">(<?=$jb;?>)</span></a>
 					</li>
-					<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-						class="lnr lnr-arrow-right"></span>Hijab<span class="number">(53)</span></a>
-					</li>
-					<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-						class="lnr lnr-arrow-right"></span>Asesoris<span class="number">(53)</span></a>
-					</li>
+				<?php } ?>
 				</ul>
 			</div>
 			<div class="sidebar-filter mt-50">
@@ -86,113 +83,30 @@
 			<!-- Start Best Seller -->
 			<section class="lattest-product-area pb-40 category-list">
 				<div class="row">
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="img/product/p1.jpg" alt="">
-							<div class="product-details">
-								<h6>addidas New Hammer sole
-								for Sports person</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-									<a href="index.php?page=p-detail"><button class="genric-btn info circle" style="width: 100%;">Detail</button></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="img/product/p2.jpg" alt="">
-							<div class="product-details">
-								<h6>addidas New Hammer sole
-								for Sports person</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
 
-									<button class="genric-btn info circle" style="width: 100%;">Detail</button>
-								</div>
-							</div>
-						</div>
-					</div>
+
 					<!-- single product -->
+					<?php 
+						$qp = mysqli_query($koneksi, "SELECT * FROM barang");
+						while($dp = mysqli_fetch_array($qp)){
+					 ?>
 					<div class="col-lg-4 col-md-6">
 						<div class="single-product">
-							<img class="img-fluid" src="img/product/p3.jpg" alt="">
+							<img class="img-fluid" style="height: 280px;" src="img/produk/<?=$dp['foto'];?>" alt="">
 							<div class="product-details">
-								<h6>addidas New Hammer sole
-								for Sports person</h6>
+								<h6><?=$dp['nama_barang'];?></h6>
 								<div class="price">
-									<h6>$150.00</h6>
+									<h6>Rp.<?=number_format($dp['harga']);?></h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
 								<div class="prd-bottom">
-
-									<button class="genric-btn info circle" style="width: 100%;">Detail</button>
+									<a href="index.php?page=p-detail&&id_barang=<?=$dp['id_barang'];?>"><button class="genric-btn info circle" style="width: 100%;">Detail</button></a>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="img/product/p4.jpg" alt="">
-							<div class="product-details">
-								<h6>addidas New Hammer sole
-								for Sports person</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
+					<?php } ?>
 
-									<button class="genric-btn info circle" style="width: 100%;">Detail</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="img/product/p5.jpg" alt="">
-							<div class="product-details">
-								<h6>addidas New Hammer sole
-								for Sports person</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-
-									<button class="genric-btn info circle" style="width: 100%;">Detail</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="img/product/p6.jpg" alt="">
-							<div class="product-details">
-								<h6>addidas New Hammer sole
-								for Sports person</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-
-									<button class="genric-btn info circle" style="width: 100%;">Detail</button>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</section>
 			<!-- End Best Seller -->
