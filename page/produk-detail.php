@@ -1,6 +1,10 @@
 <!-- Menampilkan Detail barang -->
-<?php 
+<?php
+	session_start();
 	include 'koneksi.php';
+	$id_user = $_SESSION['username'];
+    $qu = mysqli_query($koneksi, "SELECT * FROM user WHERE username = '$id_user'");
+    $du = mysqli_fetch_array($qu);
 	$qb = mysqli_query($koneksi, "SELECT * FROM barang JOIN kategori ON barang.id_kategori=kategori.id_kategori WHERE id_barang = '$_GET[id_barang]'");
 	$db = mysqli_fetch_array($qb);
  ?>
@@ -45,11 +49,13 @@
 					<h2>Rp.<?=number_format($db['harga']);?></h2>
 					<ul class="list">
 						<li><a class="active" href="#"><span>Category</span> : <?=$db['nama_kategori'];?></a></li>
+						<li><a class="active" href="#"><span>Stok</span> : <?=$db['stok'];?></a></li>
 					</ul>
 					<p><?=$db['deskripsi'];?>.</p>
 					<div class="product_count">
 						<form action="proses.php?proses=add_keranjang" method="POST">
 						<label for="qty">Quantity:</label>
+						<input type="hidden" name="id_user" value="<?=$du['id_user'];?>">
 						<input type="hidden" name="id_barang" value="<?=$db['id_barang'];?>">
 						<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 						<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
@@ -58,11 +64,41 @@
 							class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<button type="submit" class="primary-btn" style="border: none;">Tambah ke Keranjang</button>
+							<?php 
+								if(@$_SESSION['username']!=null){ ?>
+									<button type="submit" class="primary-btn" style="border: none;">Tambah ke Keranjang</button>
+								<?php }else{ ?>
+									<a class="primary-btn" data-toggle="modal" data-target="#modal-default" style="border: none; color: #FFF;">Tambah ke Keranjang</a>
+								<?php } ?>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
 						</form>
+
+
+						<!-- Modal Peringatan -->
+						<div class="modal fade" id="modal-default">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+											<h4 class="modal-title">Peringatan</h4>
+										</div>
+										<div class="modal-body">
+											Harap Login Terlebih Dahulu
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+											</div>
+										</form>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -->
+							<!-- /Modal Peringatan -->
+
 					</div>
 				</div>
 			</div>

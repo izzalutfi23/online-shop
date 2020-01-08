@@ -41,7 +41,7 @@
 						$jml_brg = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_kategori = '$dk[id_kategori]'");
 						$jb = mysqli_num_rows($jml_brg);
 					 ?>
-					<li class="main-nav-list"><a href="index.php?id_kategori=<?=$dk['id_kategori'];?>"><span
+					<li class="main-nav-list"><a href="index.php?page=promo&&id_kategori=<?=$dk['id_kategori'];?>"><span
 						class="lnr lnr-arrow-right"></span><?=$dk['nama_kategori'];?><span class="number">(<?=$jb;?>)</span></a>
 					</li>
 				<?php } ?>
@@ -89,10 +89,10 @@
 					<?php
 						$kat = $_GET['id_kategori'];
 						if($kat!=null){
-							$qp = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_kategori = '$kat'");	
+							$qp = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_kategori = '$kat' && diskon > 0");	
 						}
 						else{
-							$qp = mysqli_query($koneksi, "SELECT * FROM barang");	
+							$qp = mysqli_query($koneksi, "SELECT * FROM barang WHERE diskon > 0");	
 						}
 						while($dp = mysqli_fetch_array($qp)){
 					 ?>

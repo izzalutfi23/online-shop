@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+	include 'koneksi.php';
+ ?>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -58,13 +62,19 @@
 							<li class="nav-item <?php if($p == "berita"){echo "active";} ?>"><a class="nav-link" href="?page=berita">Berita</a></li>
 							<li class="nav-item <?php if($p == "video"){echo "active";} ?>"><a class="nav-link" href="?page=video">Video</a></li>
 							<li class="nav-item <?php if($p == "kontak"){echo "active";} ?>"><a class="nav-link" href="?page=kontak">Kontak</a></li>
-							<li class="nav-item <?php if($p == "login"){echo "active";} ?>"><a class="nav-link" href="?page=login">Login</a></li>
+
+							<?php 
+							if(@$_SESSION['username']!=null){ ?>
+								<li class="nav-item <?php if($p == "login"){echo "active";} ?>"><a class="nav-link" href="login.php?proses=logout">Logout</a></li>
+							<?php }else{ ?>
+								<li class="nav-item <?php if($p == "login"){echo "active";} ?>"><a class="nav-link" href="?page=login">Login</a></li>
+							<?php } ?>
+							
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="index.php?page=cart" class="cart"><span class="ti-bag"></span></a></li>
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
+							<?php if(@$_SESSION['username']!=null){ ?>
+								<li class="nav-item"><a href="index.php?page=cart" class="cart"><span class="ti-bag"></span></a></li>
+							<?php } ?>
 						</ul>
 					</div>
 				</div>
@@ -111,6 +121,9 @@
 				break;
 			case 'register':
 				include 'page/register.php';
+				break;
+			case 'promo':
+				include 'page/promo.php';
 				break;
 		}
 	 ?>

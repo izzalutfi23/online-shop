@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    include '../koneksi.php';
+    $id_user = $_SESSION['username'];
+    $qu = mysqli_query($koneksi, "SELECT * FROM user WHERE username = '$id_user'");
+    $du = mysqli_fetch_array($qu);
+ ?>
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -57,7 +64,7 @@
                             include 'koneksi.php';
                             $ongkir = 50000;
                             $subtotal = 0;
-                            $qk = mysqli_query($koneksi, "SELECT * FROM keranjang JOIN barang ON keranjang.id_barang=barang.id_barang WHERE id_user = 1");
+                            $qk = mysqli_query($koneksi, "SELECT * FROM keranjang JOIN barang ON keranjang.id_barang=barang.id_barang WHERE id_user = '$du[id_user]'");
                             while($dk = mysqli_fetch_array($qk)){
                                 $harga = $dk['harga'];
                                 $qty = $dk['qty'];
