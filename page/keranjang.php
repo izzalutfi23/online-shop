@@ -1,4 +1,4 @@
-!-- Start Banner Area -->
+<!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -26,87 +26,87 @@
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        <?php 
+                            include 'koneksi.php';
+                            $subtotal = 0;
+                            $qk = mysqli_query($koneksi, "SELECT * FROM keranjang JOIN barang ON keranjang.id_barang=barang.id_barang WHERE id_user = 1");
+                            while($dk = mysqli_fetch_array($qk)){
+                            $harga = $dk['harga'];
+                            $qty = $dk['qty'];
+                            $total = $harga*$qty;
+                            $subtotal = $total+$subtotal;
+                         ?>
                         <tr>
                             <td>
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="img/cart.jpg" alt="">
+                                        <img width="95px" height="100px" src="img/produk/<?=$dk['foto'];?>" alt="">
                                     </div>
                                     <div class="media-body">
-                                        <p>Minimalistic shop for multipurpose use</p>
+                                        <p><?=$dk['nama_barang'];?></p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <h5>$360.00</h5>
+                                <h5>Rp.<?=$dk['harga'];?></h5>
+                            </td>
+                            <td><?=$dk['qty'];?></td>
+                            <td>
+                                <h5>Rp.<?=number_format($total);?></h5>
                             </td>
                             <td>
-                                <div class="product_count">
-                                    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                    class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                    class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                        class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="gray_btn" href="#">Update Cart</a>
-                                </td>
-                                <td>
+                                <a onclick="return confirm('Hapus Keranjang!')" href="proses.php?proses=delete_keranjang&&id_keranjang=<?=$dk['id_keranjang'];?>&&id_barang=<?=$dk['id_barang'];?>&&qty=<?=$dk['qty'];?>"><button class="primary-btn" style="border: none;"><i class="fa fa-trash"></i></button></a>
+                            </td>
+                        </tr>
+                        <?php } ?>
 
-                                </td>
-                                <td>
+                        <tr>
+                            <td>
 
-                                </td>
-                                <td>
+                            </td>
+                            <td>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                            </td>
+                            <td>
 
-                                </td>
-                                <td>
+                            </td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td>
+                                <h5>Rp.<?=number_format($subtotal);?></h5>
+                            </td>
+                        </tr>
 
-                                </td>
-                                <td>
-                                    <h5>Subtotal</h5>
-                                </td>
-                                <td>
-                                    <h5>$2160.00</h5>
-                                </td>
-                            </tr>
-                            
-                            <tr class="out_button_area">
-                                <td>
+                        <tr class="out_button_area">
+                            <td>
 
-                                </td>
-                                <td>
+                            </td>
+                            <td>
 
-                                </td>
-                                <td>
+                            </td>
+                            <td>
 
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="index.php">Continue Shopping</a>
-                                        <a class="primary-btn" href="index.php?page=ceckout">Proceed to checkout</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="gray_btn" href="index.php">Continue Shopping</a>
+                                    <a class="primary-btn" href="index.php?page=ceckout">Proses Checkout</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     <!--================End Cart Area =================-->

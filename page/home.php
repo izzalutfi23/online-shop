@@ -86,7 +86,7 @@
 
 
 					<!-- single product -->
-					<?php 
+					<?php
 						$qp = mysqli_query($koneksi, "SELECT * FROM barang");
 						while($dp = mysqli_fetch_array($qp)){
 					 ?>
@@ -96,8 +96,15 @@
 							<div class="product-details">
 								<h6><?=$dp['nama_barang'];?></h6>
 								<div class="price">
+									<?php 
+										
+									 ?>
 									<h6>Rp.<?=number_format($dp['harga']);?></h6>
-									<h6 class="l-through">$210.00</h6>
+									<?php 
+										if($dp['diskon']>0){
+									 ?>
+										<h6 class="l-through">RP.<?=number_format($dp['harga']);?></h6>
+									<?php } ?>
 								</div>
 								<div class="prd-bottom">
 									<a href="index.php?page=p-detail&&id_barang=<?=$dp['id_barang'];?>"><button class="genric-btn info circle" style="width: 100%;">Detail</button></a>

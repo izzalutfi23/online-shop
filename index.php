@@ -61,7 +61,7 @@
 							<li class="nav-item <?php if($p == "login"){echo "active";} ?>"><a class="nav-link" href="?page=login">Login</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item"><a href="index.php?page=cart" class="cart"><span class="ti-bag"></span></a></li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
