@@ -69,4 +69,8 @@ else if($proses == 'delete_berita'){
 	mysqli_query($koneksi, "DELETE FROM berita WHERE id_berita = '$_GET[id_berita]'");
 	header('location:index.php?page=berita');
 }
+else if($proses == 'del_pesanan'){
+	mysqli_query($koneksi, "DELETE FROM pesanan WHERE id_pesanan = '$_GET[id_pesanan]'");
+	header('location:index.php?page=pesanan');
+}
 ?>
