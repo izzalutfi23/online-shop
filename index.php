@@ -125,6 +125,9 @@
 			case 'promo':
 				include 'page/promo.php';
 				break;
+			case 'baca_berita':
+				include 'page/baca_berita.php';
+				break;
 		}
 	 ?>
 

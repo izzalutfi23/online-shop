@@ -43,7 +43,7 @@
                                         <h2><?=$db['judul'];?></h2>
                                     </a>
                                     <p><?=substr($db['isi'], 0, 200);?>...</p>
-                                    <a href="single-blog.html" class="white_bg_btn">View More</a>
+                                    <a href="index.php?page=baca_berita&&id_berita=<?=$db['id_berita'];?>" class="white_bg_btn">View More</a>
                                 </div>
                             </div>
                         </div>
