@@ -30,6 +30,7 @@
                     <h3>Detail Pembelian</h3>
                     <form class="row contact_form" action="proses.php?proses=beli" method="POST" novalidate="novalidate">
                         <div class="col-md-12 form-group">
+                            <input type="hidden" name="id_user" value="<?=$du['id_user'];?>">
                             <input type="text" class="form-control" name="nama_pembeli" placeholder="Nama Lengkap">
                         </div>
                         <div class="col-md-6 form-group p_star">
@@ -68,7 +69,11 @@
                             while($dk = mysqli_fetch_array($qk)){
                                 $harga = $dk['harga'];
                                 $qty = $dk['qty'];
-                                $total = $harga*$qty;
+                                // hitung promo
+                                $diskon = $dk['diskon'];
+                                $hargaakhir = $harga - ($diskon/100) * $harga;
+
+                                $total = $hargaakhir*$qty;
                                 $subtotal = $total+$subtotal;
                                 ?>
 

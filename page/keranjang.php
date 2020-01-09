@@ -43,10 +43,16 @@
                             $subtotal = 0;
                             $qk = mysqli_query($koneksi, "SELECT * FROM keranjang JOIN barang ON keranjang.id_barang=barang.id_barang WHERE id_user = '$du[id_user]'");
                             while($dk = mysqli_fetch_array($qk)){
+
                             $harga = $dk['harga'];
                             $qty = $dk['qty'];
-                            $total = $harga*$qty;
+                            // hitung promo
+                            $diskon = $dk['diskon'];
+                            $hargaakhir = $harga - ($diskon/100) * $harga;
+
+                            $total = $hargaakhir*$qty;
                             $subtotal = $total+$subtotal;
+                            
                          ?>
                         <tr>
                             <td>
@@ -60,7 +66,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h5>Rp.<?=$dk['harga'];?></h5>
+                                <h5>Rp.<?=number_format($hargaakhir);?></h5>
                             </td>
                             <td><?=$dk['qty'];?></td>
                             <td>

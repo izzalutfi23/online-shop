@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2020 at 08:04 PM
+-- Generation Time: Jan 08, 2020 at 10:38 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -44,9 +44,7 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `foto`, `stok`, `deskripsi`, `harga`, `diskon`) VALUES
-(1, 1, 'Barang', 'coba3.png', 100, 'awkakwokwowko\r\n', 1000, 10),
-(2, 2, 'yviviv', 'mu.png', 98, 'deskripsi\r\n', 2000, 0),
-(5, 1, 'yviviv', '3aa8630f-bcab-4e85-aef2-77a7566647b0.jpg', 100, 'rgfchcc', 150000, 20);
+(7, 1, 'hijab pasmina', 'download.jpg', 7, 'iufjhf', 40000, 10);
 
 -- --------------------------------------------------------
 
@@ -105,13 +103,6 @@ CREATE TABLE `keranjang` (
   `qty` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_barang`, `qty`) VALUES
-(12, 1, 2, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -135,8 +126,7 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id_pesanan`, `id_barang`, `id_user`, `nama_pembeli`, `alamat`, `no_telp`, `jasa_pengirim`, `qty`, `keterangan`) VALUES
-(1, 2, 1, 'izza', 'Bulustalan, Semarang', '098', 'JNE', 3, 'Ukiuran 43'),
-(2, 1, 1, 'izza', 'Bulustalan, Semarang', '098', 'JNE', 5, 'Ukiuran 43');
+(4, 7, 1, 'tfctg', 'tfctfct', '5656', 'JNE', 2, 'ytcy');
 
 -- --------------------------------------------------------
 
@@ -158,9 +148,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `level`) VALUES
 (1, 'Muhammad Izza Lutfi', 'izza', 'cdb0b6889f4def26f43951b2d5b7a9e3', 'pelanggan'),
-(2, 'Rizky Noor', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(2, 'RamaHK', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
 (3, 'coba', 'coba', 'c3ec0f7b054e729c5a716c8125839829', 'pelanggan'),
-(4, 'adit', 'adit', '486b6c6b267bc61677367eb6b6458764', 'pelanggan');
+(4, 'adit', 'adit', '486b6c6b267bc61677367eb6b6458764', 'pelanggan'),
+(5, 'rama', 'rama', 'e04f28cc33cb20274dd3ff44e600a923', 'pelanggan'),
+(6, 'izza', 'izza', '4b569f5568af7aea0bd5b56c8267d22c', 'pelanggan');
 
 -- --------------------------------------------------------
 
@@ -180,7 +172,8 @@ CREATE TABLE `video` (
 INSERT INTO `video` (`id_video`, `link`) VALUES
 (2, '<iframe width=\"350\" height=\"200\" src=\"https://www.youtube.com/embed/DlJgVeMg2rE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
 (3, '<iframe width=\"350\" height=\"200\" src=\"https://www.youtube.com/embed/DlJgVeMg2rE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(4, '<iframe width=\"350\" height=\"200\" src=\"https://www.youtube.com/embed/DlJgVeMg2rE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
+(4, '<iframe width=\"350\" height=\"200\" src=\"https://www.youtube.com/embed/DlJgVeMg2rE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(5, '<iframe width=\"350\" height=\"200\" src=\"https://www.youtube.com/embed/hxSddfuYQ1k\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +234,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_barang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `berita`
@@ -259,25 +252,25 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_keranjang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_video` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_video` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
