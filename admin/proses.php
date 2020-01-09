@@ -73,4 +73,12 @@ else if($proses == 'del_pesanan'){
 	mysqli_query($koneksi, "DELETE FROM pesanan WHERE id_pesanan = '$_GET[id_pesanan]'");
 	header('location:index.php?page=pesanan');
 }
+if($proses == 'add_video'){
+	mysqli_query($koneksi, "INSERT INTO video (link) VALUES ('$_POST[link]')");
+	header('location:index.php?page=video');
+}
+else if($proses == 'delete_video'){
+	mysqli_query($koneksi, "DELETE FROM video WHERE id_video = '$_GET[id_video]'");
+	header('location:index.php?page=video');
+}
 ?>

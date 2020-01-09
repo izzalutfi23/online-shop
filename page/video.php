@@ -18,15 +18,15 @@
 		<div class="section-top-border">
 			<h3>Video</h3><br>
 			<div class="row gallery-item">
+				<?php 
+					include 'koneksi.php';
+					$qv = mysqli_query($koneksi, "SELECT * FROM video");
+					while($dv = mysqli_fetch_array($qv)){
+				 ?>
 				<div class="col-md-4">
-					<iframe width="350" height="200" src="https://www.youtube.com/embed/DlJgVeMg2rE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<?=$dv['link'];?>
 				</div>
-				<div class="col-md-4">
-					<iframe width="350" height="200" src="https://www.youtube.com/embed/DlJgVeMg2rE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
-				<div class="col-md-4">
-					<iframe width="350" height="200" src="https://www.youtube.com/embed/DlJgVeMg2rE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
+			<?php } ?>
 			</div>
 		</div>
 	</div>

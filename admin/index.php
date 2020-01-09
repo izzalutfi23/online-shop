@@ -111,6 +111,7 @@
         <li class="<?php if($p=="produk"){echo "active";} ?>"><a href="?page=produk"><i class="fa fa-shopping-cart"></i> <span>Produk</span></a></li>
         <li class="<?php if($p=="berita"){echo "active";} ?>"><a href="?page=berita"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
         <li class="<?php if($p=="pesanan"){echo "active";} ?>"><a href="?page=pesanan "><i class="fa fa-reorder"></i> <span>Pesanan</span></a></li>
+        <li class="<?php if($p=="video"){echo "active";} ?>"><a href="?page=video "><i class="fa fa-video-camera"></i> <span>Video</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -133,6 +134,9 @@
           break;
         case 'pesanan':
           include 'page/pesanan.php';
+          break;
+        case 'video':
+          include 'page/video.php';
           break;
 
         default:
